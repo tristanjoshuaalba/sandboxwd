@@ -3,7 +3,8 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 
-.robots {}
+
+/* .robots {} */
 
 .head,
 .left_arm,
@@ -22,7 +23,8 @@ h1 {
     margin-bottom: 10px;
 }
 
-.eyes {}
+
+/* .eyes {} */
 
 .head:hover {
     width: 300px;
