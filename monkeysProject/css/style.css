@@ -1,0 +1,122 @@
+body {
+    margin: auto 0;
+    background-image: url("../assets/banana-fruit-seamless-pattern-background-vector-format_52644-8.jpg");
+    /* background-size: 90% 90%; */
+    background-repeat: repeat;
+}
+
+.main-nav {
+    display: flex;
+    font-size: 4em;
+    font-family: 'Ranchers', cursive;
+    margin: 0;
+    background-color: #ea9a2a;
+    height: 10vh;
+    justify-items: auto;
+    align-items: center;
+}
+
+.sticky {
+    position: fixed;
+    /* top: 0; */
+    width: 100%;
+}
+
+li {
+    padding: 10px;
+    list-style: none;
+    color: white;
+}
+
+.push {
+    margin-left: auto;
+}
+
+a {
+    color: #f5f5f6;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+    /* viewport height */
+}
+
+.grid-wrapper {
+    display: grid;
+    /* grid-gap: 30px; */
+    grid-column-gap: 2vh;
+    grid-row-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* justify-content: center; */
+}
+
+.box {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    transition-property: all;
+    transition-property: transform;
+    border: 15px solid orange;
+}
+
+.box:hover {
+    /* filter: brightness(70%) hue-rotate(330deg); */
+    border: 15px solid white;
+    transition-duration: 3s;
+}
+
+.zone1 {
+    background-image: url("../assets/andre-mouton-GBEHjsPQbEQ-unsplash.jpg");
+}
+
+.zone2 {
+    background-image: url("../assets/brian-mann-aXqlZFeVFrU-unsplash.jpg");
+}
+
+.zone3 {
+    background-image: url("../assets/joshua-j-cotten-nMqbcS8vFwY-unsplash.jpg");
+}
+
+.zone4 {
+    background-image: url("../assets/kelly-sikkema-r077pfFsdaU-unsplash.jpg");
+}
+
+.zone5 {
+    background-image: url("../assets/shahir-shah-Po3DT3AjQug-unsplash.jpg");
+}
+
+.zone6 {
+    background-image: url("https://images.unsplash.com/flagged/photo-1566127992631-137a642a90f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+}
+
+.zone7 {
+    background-image: url("https://images.unsplash.com/photo-1579529462827-ea96b62e0d1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80");
+}
+
+.zone8 {
+    background-image: url("https://images.unsplash.com/photo-1591823879788-255213639b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80");
+}
+
+.zone9 {
+    background-image: url("https://images.unsplash.com/photo-1514907884323-78144b7f3d63?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");
+}
+
+
+/* 
+<div class="box zone1"><img src="assets/andre-mouton-GBEHjsPQbEQ-unsplash.jpg"></div>
+<div class="box zone2"><img src="assets/andre-mouton-GBEHjsPQbEQ-unsplash.jpg"></div>
+<div class="box zone3"><img src="assets/brian-mann-aXqlZFeVFrU-unsplash.jpg"></div>
+<div class="box zone4"><img src="assets/joshua-j-cotten-nMqbcS8vFwY-unsplash.jpg"></div>
+<div class="box zone5"><img src="assets/kelly-sikkema-r077pfFsdaU-unsplash.jpg"></div>
+<div class="box zone6"><img src="assets/shahir-shah-Po3DT3AjQug-unsplash.jpg"></div>
+<div class="box zone7"><img src="assets/vincent-van-zalinge-4B5F388MLE4-unsplash.jpg"></div> */
