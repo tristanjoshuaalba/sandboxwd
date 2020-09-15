@@ -46,12 +46,22 @@ function pseudoAI() {
 
 
 
-        const beta = positions.filter(i => ['1', '2', '3'].includes(i.id));
+        const win1 = positions.filter(i => ['1', '2', '3'].includes(i));
+        const win2 = positions.filter(i => ['1', '4', '7'].includes(i));
+        const win3 = positions.filter(i => ['7', '8', '9'].includes(i));
+        const win4 = positions.filter(i => ['3', '6', '9'].includes(i));
+        const win5 = positions.filter(i => ['4', '5', '6'].includes(i));
+        const win6 = positions.filter(i => ['1', '5', '9'].includes(i));
+        const win7 = positions.filter(i => ['3', '5', '7'].includes(i));
+        const win8 = positions.filter(i => ['2', '5', '8'].includes(i));
 
-        if (beta !== null) {
-            console.log('CONTINUE!')
+        if (win1 !== null | win2 !== null |
+            win3 !== null | win4 !== null |
+            win5 !== null | win6 !== null |
+            win7 !== null | win8 !== null) {
+            console.log('WIN!')
         } else {
-            console.log('WIN!!!')
+            console.log('CONTINUE!!!')
         }
 
         console.log(positions);
