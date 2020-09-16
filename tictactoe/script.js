@@ -19,15 +19,19 @@ allBoxes.forEach(function(a) {
 
 
 function pseudoAI() {
-
+    // Select all taken positions
     var taken = document.querySelectorAll('.selected');
     var allpos = document.querySelectorAll('.zone');
+    var taken_ai = document.querySelectorAll('.selected-ai');
 
+    // Convert node list to array
     taken_ = Array.apply(null, taken);
+    taken_ai_ = Array.apply(null, taken_ai);
     allpos_ = Array.apply(null, allpos);
 
+    // Check whether it is the first move
     if (taken_.length <= 1) {
-        // First Move
+
         var filtered = allpos_.filter(
             function(e) {
                 return this.indexOf(e) < 0;
@@ -37,31 +41,41 @@ function pseudoAI() {
 
         filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
     } else {
-        // Others
-        // Check if win: else continue
+        // Access text value 
         var positions = []
         taken_.forEach(function(a) {
             positions.push(a.textContent);
         });
+        console.log('POSITIONS', positions)
 
 
 
-        const win1 = positions.filter(i => ['1', '2', '3'].includes(i));
-        const win2 = positions.filter(i => ['1', '4', '7'].includes(i));
-        const win3 = positions.filter(i => ['7', '8', '9'].includes(i));
-        const win4 = positions.filter(i => ['3', '6', '9'].includes(i));
-        const win5 = positions.filter(i => ['4', '5', '6'].includes(i));
-        const win6 = positions.filter(i => ['1', '5', '9'].includes(i));
-        const win7 = positions.filter(i => ['3', '5', '7'].includes(i));
-        const win8 = positions.filter(i => ['2', '5', '8'].includes(i));
+        const result = positions.every(val => [" 1 ", " 2 ", " 3 "].includes(val) && positions.length === 3);
+        console.log('RESULT', result);
 
-        if (win1 !== null | win2 !== null |
-            win3 !== null | win4 !== null |
-            win5 !== null | win6 !== null |
-            win7 !== null | win8 !== null) {
-            console.log('WIN!')
+        const win1 = positions.every(val => [" 1 ", " 2 ", " 3 "].includes(val) && positions.length >= 3);
+        const win2 = positions.every(val => [" 4 ", " 5 ", " 6 "].includes(val) && positions.length >= 3);
+        const win3 = positions.every(val => [" 7 ", " 8 ", " 9 "].includes(val) && positions.length >= 3);
+        const win4 = positions.every(val => [" 1 ", " 4 ", " 7 "].includes(val) && positions.length >= 3);
+        const win5 = positions.every(val => [" 2 ", " 5 ", " 8 "].includes(val) && positions.length >= 3);
+        const win6 = positions.every(val => [" 3 ", " 6 ", " 9 "].includes(val) && positions.length >= 3);
+        const win7 = positions.every(val => [" 1 ", " 5 ", " 9 "].includes(val) && positions.length >= 3);
+        const win8 = positions.every(val => [" 3 ", " 5 ", " 7 "].includes(val) && positions.length >= 3);
+
+
+        if (win1 | win2 |
+            win3 | win4 |
+            win5 | win6 |
+            win7 | win8) {
+            console.log('YOU WIN!')
+
         } else {
             console.log('CONTINUE!!!')
+            var taken = document.querySelectorAll('.selected');
+            var allpos = document.querySelectorAll('.zone');
+
+            taken_ = Array.apply(null, taken);
+            allpos_ = Array.apply(null, allpos);
             var filtered = allpos_.filter(
                 function(e) {
                     return this.indexOf(e) < 0;
@@ -72,7 +86,7 @@ function pseudoAI() {
             filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
         }
 
-        console.log(positions);
+        // console.log(positions);
 
         // colors.forEach(function(color) {
         //     console.log(color);
