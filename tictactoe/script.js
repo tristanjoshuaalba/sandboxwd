@@ -62,6 +62,14 @@ function pseudoAI() {
             console.log('WIN!')
         } else {
             console.log('CONTINUE!!!')
+            var filtered = allpos_.filter(
+                function(e) {
+                    return this.indexOf(e) < 0;
+                },
+                taken_
+            );
+
+            filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
         }
 
         console.log(positions);
