@@ -1,5 +1,8 @@
 body {
-    margin: auto 0;
+    /* margin: 10%; */
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .container {
@@ -12,65 +15,65 @@ body {
 
 .grid-wrapper {
     display: grid;
-    grid-gap: 2%;
+    grid-gap: 10px;
     /* grid-column-gap: 2vh;
     grid-row-gap: 2vw; */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(auto-fill, minmax(250px, 3fr)); */
     margin-top: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
+    /* margin-left: 10%;
+    margin-right: 10%; */
     /* justify-content: center; */
 }
 
 .box {
-    width: 250px;
-    height: 250px;
-    margin: auto;
+    width: 15vmax;
+    height: 15vmax;
+    /* margin: 2px; */
     padding: auto;
     transition-property: all;
     transition-property: transform;
     border: 3px solid blueviolet;
-    text-align: center;
-    /* vertical-align: center; */
-    font-size: 50;
-    line-height: 240px;
-    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    justify-self: center;
 }
 
 .selected {
+    background-image: url("../x.gif");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
-    width: 250px;
-    height: 250px;
+    width: 15vmax;
+    height: 15vmax;
     margin: auto;
     transition-property: all;
     transition-property: transform;
-    border: 3px solid red;
-    background-color: yellow;
+    /* border: 3px solid red;
+    background-color: yellow; */
 }
 
 .selected-ai {
+    background-image: url("../o.gif");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
-    width: 250px;
-    height: 250px;
+    width: 15vmax;
+    height: 15vmax;
     margin: auto;
     transition-property: all;
     transition-property: transform;
-    border: 3px solid red;
+    /* border: 3px solid red;
     color: white;
-    background-color: green;
+    background-color: green; */
 }
 
 .winning {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
-    width: 250px;
-    height: 250px;
+    width: 15vmax;
+    height: 15vmax;
     margin: auto;
     transition-property: all;
     transition-property: transform;
@@ -83,8 +86,8 @@ body {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
-    width: 250px;
-    height: 250px;
+    width: 15vmax;
+    height: 15vmax;
     margin: auto;
     transition-property: all;
     transition-property: transform;
