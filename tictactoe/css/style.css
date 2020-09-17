@@ -1,55 +1,87 @@
 body {
-    /* opacity: 0.1; */
+    background-color: #f9f9f9;
     display: grid;
     justify-content: center;
-    /* align-content: center; */
+    /* vertical-align: middle; */
     margin: 0 auto;
-    /* margin: auto; */
     width: 100%;
     height: 100%;
 }
 
 .buffer {
-    background-color: black;
+    height: 1vh
+}
+
+@media only screen and (max-width: 400px) {
+    .buffer {
+        height: 15vh
+    }
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0.925%;
+    font-family: 'Press Start 2P', cursive;
+    color: #A4A4A4;
+    text-align: center;
+}
+
+h3 {
+    font-size: 0.75rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #A4A4A4;
+    text-align: center;
 }
 
 .container {
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vh;
+    height: 4vh;
+    font-size: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #A4A4A4;
     /* viewport height */
+}
+
+#player {
+    margin-right: auto;
+}
+
+#bot {
+    margin-left: auto;
+}
+
+button {
+    font-size: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #A4A4A4;
+    outline: none;
+    border: 0px;
+    padding: 1%;
+}
+
+button:hover {
+    border: 0px;
+    background-color: #1464F4;
+    color: white;
 }
 
 .grid-wrapper {
     display: grid;
     grid-gap: 10px;
-    /* grid-column-gap: 2vh;
-    grid-row-gap: 2vw; */
     grid-template-columns: 1fr 1fr 1fr;
-    /* grid-template-rows: 1fr 1fr 1fr; */
-    /* grid-template-columns: repeat(auto-fill, minmax(250px, 3fr)); */
     margin-top: 2%;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     width: 40%;
     height: 40%;
-    /* align-items: center; */
-    /* margin-left: 10%;
-    margin-right: 10%; */
-    /* justify-content: center; */
 }
 
 .box {
     width: 12vmax;
     height: 12vmax;
-    /* margin: 2px; */
-    /* padding: auto; */
     transition-property: all;
     transition-property: transform;
     border: 5px solid #A4A4A4;
-    /* align-self: center;
-    justify-self: center; */
 }
 
 .selected {
@@ -111,6 +143,17 @@ body {
     background-color: red;
 }
 
+.resetting {
+    width: 12vmax;
+    height: 12vmax;
+    margin: auto;
+    transition-property: all;
+    transition-property: transform;
+    border: 5px solid #666666;
+    color: white;
+    background-color: #A4A4A4;
+}
+
 .box:hover {
     /* filter: brightness(70%) hue-rotate(330deg); */
     border: 5px solid #fe575f;
@@ -119,7 +162,7 @@ body {
 
 .box:active {
     /* filter: brightness(70%) hue-rotate(330deg); */
-    border: 5px solid blue;
+    border: 5px solid pink;
     transition-duration: 3s;
 }
 

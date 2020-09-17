@@ -8,8 +8,26 @@ const allBoxes = document.querySelectorAll('.zone');
 allBoxes.forEach(function(a) {
     a.addEventListener('click', function() {
         pseudoAI();
+
     })
 })
+
+function resetGame() {
+    var element = Array.apply(null, document.getElementsByClassName("zone"));
+    setTimeout(function() {
+        element.forEach(function(item) {
+            item.classList.remove("selected");
+            item.classList.remove("selected-ai");
+
+            setTimeout(function() {
+                item.classList.add("resetting");
+                setTimeout(function() {
+                    item.classList.remove("resetting");
+                }, 250);
+            }, 300);
+        });
+    }, 500);
+}
 
 
 function checkWin(arr) {
@@ -91,7 +109,7 @@ function resetLosingGame() {
 
                 setTimeout(function() {
                     item.classList.remove("losing");
-                }, 1000);
+                }, 1500);
             }, 300);
         });
     }, 500);
