@@ -6,35 +6,39 @@ function pickMe(a) {
 
 const allBoxes = document.querySelectorAll('.zone');
 
+// Wait for mouse clicks
 allBoxes.forEach(function(a) {
-        a.addEventListener('click', function() {
-            pseudoAI();
-
-        })
+    a.addEventListener('click', function() {
+        pseudoAI();
     })
-    // Keep tab of scores
+})
+
+// Keep tab of scores
 var playerScore = Number(document.querySelectorAll('#player-score')[0].textContent);
 var botScore = Number(document.querySelectorAll('#bot-score')[0].textContent);
 
 function resetGame() {
-    var element = Array.apply(null, document.getElementsByClassName("zone"));
     // Reset Score
     document.querySelectorAll('#player-score')[0].textContent = "0";
     document.querySelectorAll('#bot-score')[0].textContent = "0";
 
+    // Unselect positions
+    var element = Array.apply(null, document.getElementsByClassName("zone"));
     setTimeout(function() {
         element.forEach(function(item) {
+            // Re-enable on-click
             item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
 
-
+            // Add some animations using timeout
             setTimeout(function() {
                 item.classList.add("resetting");
+
                 setTimeout(function() {
                     item.classList.remove("resetting");
-
                 }, 250);
+
             }, 300);
         });
     }, 500);
@@ -42,6 +46,7 @@ function resetGame() {
 
 
 function checkWin(arr) {
+    // Winning positions: Exact subarray
     const win1 = arr.every(val => ["1", "2", "3"].includes(val) && arr.length >= 3);
     const win2 = arr.every(val => ["4", "5", "6"].includes(val) && arr.length >= 3);
     const win3 = arr.every(val => ["7", "8", "9"].includes(val) && arr.length >= 3);
@@ -51,6 +56,7 @@ function checkWin(arr) {
     const win7 = arr.every(val => ["1", "5", "9"].includes(val) && arr.length >= 3);
     const win8 = arr.every(val => ["3", "5", "7"].includes(val) && arr.length >= 3);
 
+    // Winning positions: superarray
     const win1x = ["1", "2", "3"].every(val => arr.includes(val) && arr.length >= 3);
     const win2x = ["4", "5", "6"].every(val => arr.includes(val) && arr.length >= 3);
     const win3x = ["7", "8", "9"].every(val => arr.includes(val) && arr.length >= 3);
@@ -70,7 +76,8 @@ function checkWin(arr) {
 }
 
 allBoxes.forEach(function(a) {
-    a.addEventListener('mousemove', function() {
+    a.addEventListener('mouseout', function() {
+        // Get all Bot taken positions
         var taken_ai = document.querySelectorAll('.selected-ai');
         taken_ai_ = Array.apply(null, taken_ai);
         var bot = []
@@ -78,6 +85,7 @@ allBoxes.forEach(function(a) {
             bot.push(item.id);
         });
 
+        // Check if Bot wins
         if (bot.length >= 1) {
             if (checkWin(bot)) {
                 console.log('BOT WIN');
@@ -92,11 +100,15 @@ allBoxes.forEach(function(a) {
 })
 
 function resetWinningGame() {
-    var element = Array.apply(null, document.getElementsByClassName("zone"));
+    // Add to score
     playerScore += 1;
     document.querySelectorAll('#player-score')[0].textContent = playerScore;
+
+    // Reset positions
+    var element = Array.apply(null, document.getElementsByClassName("zone"));
     setTimeout(function() {
         element.forEach(function(item) {
+            // Disable on-click
             item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
@@ -112,12 +124,15 @@ function resetWinningGame() {
 }
 
 function resetLosingGame() {
-    var element = Array.apply(null, document.getElementsByClassName("zone"));
-    // To fix Bot Score
+    // Add to score
     botScore += 1;
     document.querySelectorAll('#bot-score')[0].textContent = botScore;
+
+    // Reset positions
+    var element = Array.apply(null, document.getElementsByClassName("zone"));
     setTimeout(function() {
         element.forEach(function(item) {
+            // Disable on-click
             item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
@@ -163,7 +178,11 @@ function pseudoAI() {
             },
             taken_
         );
-        filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
+
+        // Bot moves
+        var randomNum = Math.random();
+        filtered[Math.floor(randomNum * filtered.length)].classList.add("selected-ai");
+        filtered[Math.floor(randomNum * filtered.length)].style.pointerEvents = 'none';
     } else {
         // Access text value 
         console.log('PLAYER POSITIONS', player)
@@ -185,8 +204,9 @@ function pseudoAI() {
                 },
                 taken_.concat(taken_ai_)
             );
-
-            filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
+            var randomNum = Math.random();
+            filtered[Math.floor(randomNum * filtered.length)].classList.add("selected-ai");
+            filtered[Math.floor(randomNum * filtered.length)].style.pointerEvents = 'none';
         }
 
     }
@@ -195,3 +215,4 @@ function pseudoAI() {
 
 // TO DO:
 // MAKE IT SMARTER
+// Disable bot chosen boxes
