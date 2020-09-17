@@ -71,14 +71,9 @@ function resetWinningGame() {
 
             setTimeout(function() {
                 item.classList.add("winning");
-
-
                 setTimeout(function() {
                     item.classList.remove("winning");
-
-
                 }, 250);
-
             }, 300);
         });
     }, 500);
@@ -96,10 +91,7 @@ function resetLosingGame() {
 
                 setTimeout(function() {
                     item.classList.remove("losing");
-
-
                 }, 250);
-
             }, 300);
         });
     }, 500);
@@ -161,68 +153,9 @@ function pseudoAI() {
             filtered[Math.floor(Math.random() * filtered.length)].classList.add("selected-ai");
         }
 
-        // console.log(positions);
-
-        // colors.forEach(function(color) {
-        //     console.log(color);
-        // });
-
-
     }
-
-
-    console.log(taken)
-
-
-
-
-
-
-    // console.log(filtered);
-
-
-
-    // console.log(allpos)
-
-    // .filter(e => !taken.includes(e)));
-
-    // const random = Math.floor(Math.random() * allpos.length);
-    // console.log(random, allpos[random]);
-    // var taken = [];
-    // var allpos = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-
-    // console.log(allpos);
-    // element.forEach(function(a) {
-    //     taken.push(a.textContent)
-    // });
-    // // console.log(taken)
-    // console.log(allpos.filter(e => !taken.includes(e)));
-
-
 
 }
 
-// RECORD POSITION
-
-
-// RANDOM POSITION
-
-
-
-// // Listen to when the Player 1 button is clicked
-// p1button.addEventListener("click", function() {
-//     p1score++;
-//     if (p1score < inputscorelimit) {
-//         console.log('P1:', p1score);
-//         p1display.textContent = p1score
-//     } else {
-//         console.log('P1:', p1score);
-//         p1display.textContent = p1score;
-//         p1display.classList.add("winner");
-//         setTimeout(function() {
-//             alert("GAME OVER! Player 1 wins!!!")
-//             reset()
-//         }, 50);
-//     }
-// });
+// TO DO:
+// MAKE IT SMARTER
