@@ -1,28 +1,39 @@
 function pickMe(a) {
     var element = document.getElementsByClassName("zone");
     element[a].classList.add("selected");
+    element[a].style.pointerEvents = 'none';
 }
 
 const allBoxes = document.querySelectorAll('.zone');
 
 allBoxes.forEach(function(a) {
-    a.addEventListener('click', function() {
-        pseudoAI();
+        a.addEventListener('click', function() {
+            pseudoAI();
 
+        })
     })
-})
+    // Keep tab of scores
+var playerScore = Number(document.querySelectorAll('#player-score')[0].textContent);
+var botScore = Number(document.querySelectorAll('#bot-score')[0].textContent);
 
 function resetGame() {
     var element = Array.apply(null, document.getElementsByClassName("zone"));
+    // Reset Score
+    document.querySelectorAll('#player-score')[0].textContent = "0";
+    document.querySelectorAll('#bot-score')[0].textContent = "0";
+
     setTimeout(function() {
         element.forEach(function(item) {
+            item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
+
 
             setTimeout(function() {
                 item.classList.add("resetting");
                 setTimeout(function() {
                     item.classList.remove("resetting");
+
                 }, 250);
             }, 300);
         });
@@ -82,8 +93,11 @@ allBoxes.forEach(function(a) {
 
 function resetWinningGame() {
     var element = Array.apply(null, document.getElementsByClassName("zone"));
+    playerScore += 1;
+    document.querySelectorAll('#player-score')[0].textContent = playerScore;
     setTimeout(function() {
         element.forEach(function(item) {
+            item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
 
@@ -99,8 +113,12 @@ function resetWinningGame() {
 
 function resetLosingGame() {
     var element = Array.apply(null, document.getElementsByClassName("zone"));
+    // To fix Bot Score
+    botScore += 1;
+    document.querySelectorAll('#bot-score')[0].textContent = botScore;
     setTimeout(function() {
         element.forEach(function(item) {
+            item.style.pointerEvents = 'auto';
             item.classList.remove("selected");
             item.classList.remove("selected-ai");
 
