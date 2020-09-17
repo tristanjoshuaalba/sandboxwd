@@ -73,7 +73,7 @@ function resetWinningGame() {
                 item.classList.add("winning");
                 setTimeout(function() {
                     item.classList.remove("winning");
-                }, 250);
+                }, 1250);
             }, 300);
         });
     }, 500);
@@ -91,7 +91,7 @@ function resetLosingGame() {
 
                 setTimeout(function() {
                     item.classList.remove("losing");
-                }, 250);
+                }, 1000);
             }, 300);
         });
     }, 500);
