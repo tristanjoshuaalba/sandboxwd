@@ -44,6 +44,33 @@ function resetGame() {
     }, 500);
 }
 
+function drawGame() {
+    // Reset Score
+    // document.querySelectorAll('#player-score')[0].textContent = "0";
+    // document.querySelectorAll('#bot-score')[0].textContent = "0";
+
+    // Unselect positions
+    var element = Array.apply(null, document.getElementsByClassName("zone"));
+    setTimeout(function() {
+        element.forEach(function(item) {
+            // Re-enable on-click
+            item.style.pointerEvents = 'auto';
+            item.classList.remove("selected");
+            item.classList.remove("selected-ai");
+
+            // Add some animations using timeout
+            setTimeout(function() {
+                item.classList.add("resetting");
+
+                setTimeout(function() {
+                    item.classList.remove("resetting");
+                }, 250);
+
+            }, 300);
+        });
+    }, 500);
+}
+
 
 function checkWin(arr) {
     // Winning positions: Exact subarray
@@ -77,9 +104,22 @@ function checkWin(arr) {
 
 allBoxes.forEach(function(a) {
     a.addEventListener('mouseout', function() {
-        // Get all Bot taken positions
+        // Select all taken positions
+        var taken = document.querySelectorAll('.selected');
+        var allpos = document.querySelectorAll('.zone');
         var taken_ai = document.querySelectorAll('.selected-ai');
+
+        // Convert node list to array
+        taken_ = Array.apply(null, taken);
         taken_ai_ = Array.apply(null, taken_ai);
+        allpos_ = Array.apply(null, allpos);
+
+        // Get all positions
+        var player = []
+        taken_.forEach(function(item) {
+            player.push(item.id);
+        });
+
         var bot = []
         taken_ai_.forEach(function(item) {
             bot.push(item.id);
@@ -91,7 +131,11 @@ allBoxes.forEach(function(a) {
                 console.log('BOT WIN');
                 resetLosingGame();
             } else {
-                null
+                if ((bot.length + player.length === 9) && (!checkWin(player))) {
+                    drawGame();
+                } else {
+                    null
+                }
             }
         } else {
             null
@@ -184,6 +228,7 @@ function pseudoAI() {
         filtered[Math.floor(randomNum * filtered.length)].classList.add("selected-ai");
         filtered[Math.floor(randomNum * filtered.length)].style.pointerEvents = 'none';
     } else {
+        // Succeeding moves
         // Access text value 
         console.log('PLAYER POSITIONS', player)
         console.log('BOT POSITIONS', bot)
@@ -212,6 +257,8 @@ function pseudoAI() {
     }
 
 }
+
+
 
 // TO DO:
 // MAKE IT SMARTER
