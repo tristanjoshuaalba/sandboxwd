@@ -258,6 +258,35 @@ function pseudoAI() {
 
 }
 
+// function smarterAI(arr) {
+//     var smartDecision = 1;
+
+//     for (i = 0, i < 8, i++) {
+//         smartDecision *= 0;
+
+//     }
+
+
+//     // Winning positions: Exact subarray
+//     const win1 = arr.every(val => ["1", "2", "3"].includes(val) && arr.length >= 3);
+//     const win2 = arr.every(val => ["4", "5", "6"].includes(val) && arr.length >= 3);
+//     const win3 = arr.every(val => ["7", "8", "9"].includes(val) && arr.length >= 3);
+//     const win4 = arr.every(val => ["1", "4", "7"].includes(val) && arr.length >= 3);
+//     const win5 = arr.every(val => ["2", "5", "8"].includes(val) && arr.length >= 3);
+//     const win6 = arr.every(val => ["3", "6", "9"].includes(val) && arr.length >= 3);
+//     const win7 = arr.every(val => ["1", "5", "9"].includes(val) && arr.length >= 3);
+//     const win8 = arr.every(val => ["3", "5", "7"].includes(val) && arr.length >= 3);
+
+//     // Winning positions: superarray
+//     const win1x = ["1", "2", "3"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win2x = ["4", "5", "6"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win3x = ["7", "8", "9"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win4x = ["1", "4", "7"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win5x = ["2", "5", "8"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win6x = ["3", "6", "9"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win7x = ["1", "5", "9"].every(val => arr.includes(val) && arr.length >= 3);
+//     const win8x = ["3", "5", "7"].every(val => arr.includes(val) && arr.length >= 3);
+// }
 
 
 // TO DO:
