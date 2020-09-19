@@ -27,8 +27,13 @@ h1 {
     width: 100px;
 }
 
+.pattern {
+    background-color: red;
+    border: 2px solid red;
+}
+
 .grid-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2%;
 }
