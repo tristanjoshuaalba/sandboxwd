@@ -48,6 +48,7 @@ function displayPattern() {
         }
         setTimeout(function() {
             a.classList.remove('pattern')
+            a.style.pointerEvents = 'onclick';
 
         }, 3000)
     })
