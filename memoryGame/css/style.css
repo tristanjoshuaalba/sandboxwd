@@ -34,6 +34,22 @@ h1 {
 
 .grid-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2%;
+}
+
+button {
+    font-size: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #A4A4A4;
+    outline: none;
+    border: 0px;
+    padding: 1%;
+    width: 100%;
+}
+
+button:hover {
+    border: 0px;
+    background-color: #1464F4;
+    color: white;
 }

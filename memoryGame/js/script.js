@@ -13,11 +13,12 @@
 // var randomNum = Math.random();
 // filtered[Math.floor(randomNum * filtered.length)].classList.add("selected-ai");
 
-var numBlocks = prompt('How many blocks?');
+// var numBlocks = prompt('How many blocks?');
+var numBlocks = 25;
 
 function genBlocks(numBlocks) {
     // Create array of id's to mark 
-    var toMemorize = [];
+    toMemorize = [];
     for (i = 1; i <= numBlocks; i++) {
         if (Math.random() >= 0.50) {
             toMemorize.push('x')
@@ -34,7 +35,11 @@ function genBlocks(numBlocks) {
         newBlock.className = "memory-blocks";
 
         document.getElementById('game-area').appendChild(newBlock);
-    }
+    };
+
+    a = toMemorize
+
+
 }
 
 // Display Patterns Momentarily
