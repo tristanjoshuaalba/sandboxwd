@@ -15,28 +15,32 @@
 
 // var numBlocks = prompt('How many blocks?');
 var numBlocks = 5;
+var proba = 0.20;
+var levelProba = 1;
+var timer = 1;
+var score = 0;
+var playerLevel = 1;
+var scorePenalty = 3;
 
-function genBlocks(numBlocks) {
+function genBlocks(numBlocks, proba) {
     // Create array of id's to mark 
     toMemorize = [];
     for (i = 1; i <= numBlocks; i++) {
-
+        // Generate random number for placement
         var rand = Math.random();
-        console.log(rand)
-        if (rand >= 0.50) {
-            toMemorize.push('x')
+
+        // Check whether random number exceeds probability threshold for placement
+        if (rand >= proba) {
+            toMemorize.push(1)
         } else {
-            toMemorize.push('o')
+            toMemorize.push(0)
         }
     };
 
     for (i = 1; i <= numBlocks; i++) {
-        console.log(i);
-
         var newBlock = document.createElement('div');
         newBlock.id = toMemorize[i - 1];
         newBlock.className = "memory-blocks";
-
         document.getElementById('game-area').appendChild(newBlock);
     };
 
@@ -47,56 +51,106 @@ function genBlocks(numBlocks) {
 function displayPattern() {
     var memoryBlocks = document.querySelectorAll('.memory-blocks')
     memoryBlocks.forEach(function(a) {
-        if (a.id == 'x') {
+        if (a.id == 1) {
             a.classList.add('pattern')
         } else {
             null
         }
         setTimeout(function() {
-
-            // HERE NOW: Selecting
             a.classList.remove('pattern');
-            // a.onclick = function() {
-            //     a.classList.toggle('pattern')
-            // };
+            a.id = null;
 
-        }, 3000)
+            // Adding on-click functionality to mark answers
+            a.onclick = function() {
+                a.classList.toggle('pattern')
+            };
+
+        }, timer * 1000)
     })
 
 }
 
 
 function checkAnswer() {
-    // Another solution: Getting indices of element in an array
-    // var indices = [];
-    // var array = ['a', 'b', 'a', 'c', 'a', 'd'];
-    // var element = 'a';
-    // var idx = array.indexOf(element);
-    // while (idx != -1) {
-    //     indices.push(idx);
-    //     idx = array.indexOf(element, idx + 1);
-    // }
-    // console.log(indices);
-
     // Querying all the memory-blocks class elements
     var memoryBlocks = document.querySelectorAll('.memory-blocks');
+    var levelScore = 0;
 
     // Among all of the memory-blocks, which has the pattern class?
     var answerBlocks = [];
     memoryBlocks.forEach(function(item) {
             if (item.classList.value.split(" ").includes("pattern")) {
-                answerBlocks.push('x');
+                answerBlocks.push(1);
             } else {
-                answerBlocks.push('o');
+                answerBlocks.push(0);
             }
         })
         // Store answers in a global variable 
     b = answerBlocks;
     // Check number of intersections for the score!
+    for (i = 0; i <= b.length - 1; i++) {
+        if (toMemorize[i] === b[i]) {
+            memoryBlocks[i].classList.add('correct');
+            score += 1;
+            levelScore += 1;
+
+        } else {
+            score -= scorePenalty;
+            memoryBlocks[i].classList.add('wrong');
+        }
+    }
+
+    if (levelScore == b.length && toMemorize.length <= 20) {
+        numBlocks += 5;
+        proba += 0.10
+        playerLevel += 1;
+        scorePenalty = playerLevel * 3;
+
+    } else if (levelScore == b.length && toMemorize.length > 20 && proba <= 0.90) {
+        proba += 0.05
+    } else {
+        null
+    }
+    document.querySelector('#player-level').textContent = playerLevel;
+    document.querySelector('#player-score').textContent = score;
+    document.querySelector('#penalty').textContent = scorePenalty;
+
+    if (score < 0) {
+        document.querySelector('#player-score').classList.add('losing-score');
+    } else { document.querySelector('#player-score').classList.remove('losing-score'); }
+    setTimeout(function() {
+        cleanBlocks();
+        gameProper(numBlocks, proba);
+    }, 2000)
 }
 
 
-// Start Memory Game Engine
-genBlocks(numBlocks);
+function cleanBlocks() {
+    var memoryBlocks = document.querySelectorAll('.memory-blocks');
+    memoryBlocks.forEach(function(item) {
+        item.remove();
+    })
+}
 
-displayPattern();
+// Start Memory Game Engine
+
+function gameProper(numBlocks, proba) {
+    genBlocks(numBlocks, proba);
+    displayPattern();
+}
+
+
+gameProper(numBlocks, proba);
+
+
+
+// Another solution: Getting indices of element in an array
+// var indices = [];
+// var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+// var element = 'a';
+// var idx = array.indexOf(element);
+// while (idx != -1) {
+//     indices.push(idx);
+//     idx = array.indexOf(element, idx + 1);
+// }
+// console.log(indices);
