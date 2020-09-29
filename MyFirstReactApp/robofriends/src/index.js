@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
+import Hello from './Hello.js';
 import * as serviceWorker from './serviceWorker';
+import 'tachyons';
 
 ReactDOM.render( <
-    h1 >
-    Hello World!
-    <
-    /h1>,
-    // <React.StrictMode>
-    //   <App />
-    // </React.StrictMode>,
+    Hello greeting = { 'Hello Tristan' }
+    / > ,
     document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
+
+
 serviceWorker.unregister();
