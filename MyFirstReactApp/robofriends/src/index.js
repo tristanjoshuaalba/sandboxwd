@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
-import {robots} from './robots.js';
+
 
 ReactDOM.render( 
-    <App robots = {robots}/>
+    <App/>
     ,
     document.getElementById('root')
 );
