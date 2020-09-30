@@ -13,10 +13,23 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      robots: robots,
+      robots: [],
       searchfield: ''
     }
   }
+
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+                        return response.json();
+      })
+      .then(users => {
+        this.setState({robots:users})
+      })
+    
+  }
+
+
   // 2. State Modification function via DOM events 
   onSearchChange = (event) => {
       this.setState({searchfield: event.target.value})
@@ -30,6 +43,9 @@ class App extends Component {
     const filteredRobots = this.state.robots.filter(robots => {
       return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
     })
+    if (this.state.robots.length ===0) {
+      return <h1> Loading </h1>
+    } else {
     return (
       // 3.2. Rendering using updated state
       <div className='tc'>
@@ -38,8 +54,8 @@ class App extends Component {
           <CardList robots = {filteredRobots}/>
       </div>   
       )
+    }
   }
 };
-
 
 export default App;
