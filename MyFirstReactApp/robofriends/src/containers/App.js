@@ -41,13 +41,15 @@ class App extends Component {
   // 3. Render
   render() {
     // 3.1 Preprocessing of state
-    const filteredRobots = this.state.robots.filter(robots => {
-      return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    // Destructuring so you can access the objects without repeating 
+    const {robots, searchfield} = this.state;
+    const filteredRobots = robots.filter(robots => {
+      return robots.name.toLowerCase().includes(searchfield.toLowerCase());
     })
-    if (this.state.robots.length ===0) {
-      return <h1> Loading </h1>
-    } else {
-    return (
+    // Changed if-else to ternary conditionals to make it cleaner
+    return !robots.length ?
+     (<h1> Loading </h1>)
+    : (
       // 3.2. Rendering using updated state
       <div className='tc'>
           <h1 className='f1'>RoboFriends</h1>
@@ -60,7 +62,7 @@ class App extends Component {
       </div>   
       )
     }
-  }
+  
 };
 
 export default App;
