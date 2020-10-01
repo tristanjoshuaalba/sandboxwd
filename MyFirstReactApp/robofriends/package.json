@@ -1,5 +1,6 @@
 {
   "name": "robofriends",
+  "homepage": "http://robofriends.decoroustea.xyz",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
