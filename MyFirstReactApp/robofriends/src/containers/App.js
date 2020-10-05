@@ -5,11 +5,12 @@ import ErrorBoundary from '../components/ErrorBoundary'
 // import {robots} from './robots.js';
 import Scroll from '../components/Scroll.js';
 import './App.css';
-import {connect} from 'react-redux';
-import {setSearchField} from '../actions,js';
+import { connect } from 'react-redux';
+import { setSearchField } from '../actions.js';
+// import {searchRobots} from '../reducers';
 
 // This is just syntax
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
       searchField: state.searchRobots.searchField
   }
@@ -59,7 +60,7 @@ class App extends Component {
   render() {
     // 3.1 Preprocessing of state
     // Destructuring so you can access the objects without repeating 
-    const {robots, searchfield} = this.state;
+    const {robots} = this.state;
     const {searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter(robots => {
       return robots.name.toLowerCase().includes(searchField.toLowerCase());
@@ -71,7 +72,7 @@ class App extends Component {
       // 3.2. Rendering using updated state
       <div className='tc'>
           <h1 className='f1'>RoboFriends</h1>
-          <SearchBox searchChange = {this.onSearchChange}/>
+          <SearchBox searchChange = {onSearchChange}/>
 
           <Scroll>
                 <ErrorBoundary>
