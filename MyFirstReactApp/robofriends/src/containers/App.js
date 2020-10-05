@@ -5,6 +5,21 @@ import ErrorBoundary from '../components/ErrorBoundary'
 // import {robots} from './robots.js';
 import Scroll from '../components/Scroll.js';
 import './App.css';
+import {connect} from 'react-redux';
+import {setSearchField} from '../actions,js';
+
+// This is just syntax
+const mapStateToProps = state => {
+  return {
+      searchField: state.searchRobots.searchField
+  }
+}
+
+const mapDispatchtoProps = dispatch => {
+  return {
+      onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+  }
+}
 
 // The App Component has two states: robots and searchfield
 // States are what changes the APP
@@ -16,7 +31,7 @@ class App extends Component {
     super();
     this.state = {
       robots: [],
-      searchfield: ''
+      // searchfield: ''
     }
   }
 
@@ -34,19 +49,20 @@ class App extends Component {
 
 
   // 2. State Modification function via DOM events 
-  onSearchChange = (event) => {
-      this.setState({searchfield: event.target.value})
+  // onSearchChange = (event) => {
+      // this.setState({searchfield: event.target.value})
       // console.log(event.target.value);
       // console.log(filteredRobots)
-  }
+  // }
 
   // 3. Render
   render() {
     // 3.1 Preprocessing of state
     // Destructuring so you can access the objects without repeating 
     const {robots, searchfield} = this.state;
+    const {searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter(robots => {
-      return robots.name.toLowerCase().includes(searchfield.toLowerCase());
+      return robots.name.toLowerCase().includes(searchField.toLowerCase());
     })
     // Changed if-else to ternary conditionals to make it cleaner
     return !robots.length ?
@@ -70,4 +86,6 @@ class App extends Component {
   
 };
 
-export default App;
+// connect() accepts 2 parameters
+// Subscribe to any state changes in the redux store
+export default connect(mapStateToProps, mapDispatchtoProps)(App);
