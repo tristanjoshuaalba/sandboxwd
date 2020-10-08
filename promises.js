@@ -12,3 +12,5 @@ Promise.all(urls.map(url => {
     console.log(results[1])
     console.log(results[2])
 }).catch(() => console.log('Error!'))
+
+// Note: A fetch simply returns a promise
