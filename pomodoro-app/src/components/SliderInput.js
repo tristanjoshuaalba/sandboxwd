@@ -45,7 +45,7 @@ const valuetext = (value) => {
     },
   })(Slider);
   
-const SliderInput = () => {
+const SliderInput = ({focusTime, restTime}) => {
     // const classes = useStyles();
     return (
         <div className='center w-75'>
@@ -61,6 +61,7 @@ const SliderInput = () => {
             marks
             min={5}
             max={60}
+            onChange = {focusTime}
             // valueLabelDisplay="off"
           />
           <Typography id="discrete-slider" gutterBottom className='white'>
@@ -75,6 +76,7 @@ const SliderInput = () => {
             marks
             min={0}
             max={30}
+            onChange = {restTime}
           />
         </div>)
 }
