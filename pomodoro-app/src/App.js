@@ -13,19 +13,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      resetStatus: 0,
+      resetStatus: false,
       resetFocusTime: 25,
       resetRestTime: 5,
       focusTime: 25,
       restTime: 5,
-      status: 'pause'
+      status: 'pause',
+      phase: 'focus'
       // searchfield: ''
     }
   }
 
   onfocusTimeChange = (event) => {
-    this.setState({focusTime: event.target.ariaValueNow})
-    this.setState({resetFocusTime: event.target.ariaValueNow})
+    this.setState({focusTime: event.target.ariaValueNow, resetFocusTime: event.target.ariaValueNow})
+    // this.setState({})
     // console.log(event.target.ariaValueNow)
   }
 
@@ -46,47 +47,50 @@ class App extends Component {
   clockTick = (timeleft) => {
     const timer = setInterval(()=> {
       timeleft--;
-      if(this.state.resetStatus === 0){
-      this.setState({focusTime:timeleft})}
+      if(this.state.resetStatus === false){
+        
+
+      this.setState({focusTime:timeleft})
+    }
       
-      if(timeleft<=0 | this.state.status === 'pause' | this.state.resetStatus == 1){
+      if(this.state.status === 'pause' | this.state.resetStatus === true){
         clearInterval(timer);
-      }}, 1000);
+      }
+
+      if(timeleft<=0){
+        clearInterval(timer);
+      }
+    }, 1000);
     }
  
-  onButtonClick = (event) => {
+  onButtonClick = () => {
     if(this.state.status === 'pause'){
       this.setState({status: 'play'})
 
         let timeleft = this.state.focusTime;
         this.clockTick(timeleft)
-        
-
-      
+        this.setState({phase: 'rest'})
+        console.log(this.state.phase)
+        let timeleft2 = this.state.restTime;
+        this.clockTick(timeleft2)
     } else {
       this.setState({status: 'pause'})
-      // clearInterval()
-      // clearInterval(timer);
     }
     console.log(this.state.status)
   }
 
-  onResetClick = (event) => {
-    if(this.state.resetStatus === 0) {
-      this.setState({resetStatus: 1})
+  onResetClick = () => {
+    if(this.state.resetStatus === false) {
+      this.setState({resetStatus: true})
       this.setState({focusTime: this.state.resetFocusTime})
       this.setState({restTime: this.state.resetRestTime})
-
-      // To do: Change Play/Pause Button with Reset
+      this.setState({status: 'pause'})
+      // To do: Change Play/Pause Button with Reset - DONE
     } 
-
-    
-
-    setTimeout(()=> {this.setState({resetStatus: 0})}, 1000)
-    
+    setTimeout(()=> {this.setState({resetStatus: false})}, 1000)
   }
 
-
+// To do: Add phase for timer
   render() {
     // let timeleft = 100;
     // const timer = setInterval(()=>{
@@ -101,7 +105,7 @@ class App extends Component {
     return(
       <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
         <h1 className = 'f2 tc white pt3'>Pomodoro</h1>
-        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime}/>
+        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase}/>
         <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange}/>
         <Controller status = {this.onButtonClick} reset = {this.onResetClick} statusLabel = {this.state.status}/>
       </div>
