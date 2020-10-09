@@ -45,7 +45,7 @@ const valuetext = (value) => {
     },
   })(Slider);
   
-const SliderInput = ({focusTime, restTime}) => {
+const SliderInput = ({focusTime, restTime, onfocusTimeChange}) => {
     // const classes = useStyles();
     return (
         <div className='center w-75'>
@@ -79,7 +79,10 @@ const SliderInput = ({focusTime, restTime}) => {
             onChange = {restTime}
           />
         </div>)
+        
 }
+
+// console.log(focusTime)
 
 
 export default SliderInput;
