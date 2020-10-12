@@ -56,7 +56,7 @@ const SliderInput = ({ focusTime, restTime }) => {
             /Typography> <
             PrettySlider defaultValue = { 25 }
             getAriaValueText = { valuetext }
-            aria - labelledby = "discrete-slider"
+            aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
             step = { 5 }
             marks min = { 5 }
@@ -70,7 +70,7 @@ const SliderInput = ({ focusTime, restTime }) => {
             /Typography> <
             PrettySlider defaultValue = { 5 }
             getAriaValueText = { valuetext }
-            aria - labelledby = "discrete-slider"
+            aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
             step = { 5 }
             marks min = { 0 }
