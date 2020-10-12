@@ -6,7 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const Controller = ({status, reset, statusLabel}) => {
     let label;
-    if(statusLabel === 'pause'){
+    if(statusLabel === false){
         label = 'play'
     } else {
         label = 'pause'
