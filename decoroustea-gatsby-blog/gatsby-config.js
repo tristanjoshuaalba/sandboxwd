@@ -1,29 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: `Novela by Narative`,
-    name: `Narative`,
-    siteUrl: `https://novela.narative.co`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    title: `Decorous Tea Coding Projects`,
+    name: `Decorous Tea`,
+    siteUrl: `http://decoroustea.xyz`,
+    description: `This is a sandbox coding portfolio by Tristan Alba`,
     hero: {
-      heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
+      heading: `Hi! Feel free to browse through my current projects.`,
       maxWidth: 652,
     },
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/narative`,
+        url: `https://twitter.com/tristanjalba`,
       },
       {
         name: `github`,
-        url: `https://github.com/narative`,
+        url: `https://github.com/tristanjoshuaalba`,
       },
       {
         name: `instagram`,
-        url: `https://instagram.com/narative.co`,
+        url: `https://www.instagram.com/tristan.j.alba/`,
       },
       {
         name: `linkedin`,
-        url: `https://www.linkedin.com/company/narative/`,
+        url: `https://www.linkedin.com/in/tristanjoshuaalba/`,
       },
       {
         name: `dribbble`,
@@ -48,8 +48,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `Decorous Tea Code Projects`,
+        short_name: `Decorous Tea`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
